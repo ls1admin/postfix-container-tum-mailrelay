@@ -1,0 +1,15 @@
+version: '2'
+services:
+  postfix-test:
+    container_name: postfix-test
+    depends_on: 
+      - postfix
+    build: 
+      context: .
+      dockerfile: Dockerfile-Testcontainer
+    networks: 
+      - mail
+
+networks: 
+  mail: 
+    driver: bridge

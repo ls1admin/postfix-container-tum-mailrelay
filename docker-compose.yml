@@ -14,11 +14,6 @@ services:
     volumes:
       - "./config:/config"
     hostname: ${HOST_FQDN}
-    environment: 
-      - HOST_FQDN
-
-
-
 
 networks: 
   mail: 
