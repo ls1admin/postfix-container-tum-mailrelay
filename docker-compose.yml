@@ -12,7 +12,7 @@ services:
     - "25"
     restart: always
     volumes:
-      - "./config:/config"
+      - "./postfix-config:/config"
     hostname: ${HOST_FQDN}
 
 networks: 
