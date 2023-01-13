@@ -1,0 +1,25 @@
+version: '2'
+services:
+  postfix:
+    container_name: postfix
+      #image:  TODO
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    networks: 
+      - mail
+    expose:
+    - "25"
+    restart: always
+    volumes:
+      - "./config:/config"
+    hostname: ${HOST_FQDN}
+    environment: 
+      - HOST_FQDN
+
+
+
+
+networks: 
+  mail: 
+    driver: bridge

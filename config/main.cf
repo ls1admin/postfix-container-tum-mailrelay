@@ -1,0 +1,8 @@
+compatibility_level = 2
+queue_directory = /var/spool/postfix
+data_directory = /var/lib/postfix
+mail_owner = postfix
+maillog_file = /dev/stdout
+mynetworks = 127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
+relayhost = mailrelay.in.tum.de
+setgid_group = postdrop
