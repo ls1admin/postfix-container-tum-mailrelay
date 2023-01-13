@@ -2,7 +2,7 @@ version: '2'
 services:
   postfix:
     container_name: postfix
-      #image:  TODO
+    image: ghcr.io/ls1admin/postfix
     build: 
       context: .
       dockerfile: Dockerfile
