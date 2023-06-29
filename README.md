@@ -8,7 +8,5 @@ Postfix container preconfigured to use the TUM RBG Mail relays
 - Adapt `config/main.cf` to resemble your intended configuration 
 
 
-
-
 # TODO
 - Nicer config for the test container
