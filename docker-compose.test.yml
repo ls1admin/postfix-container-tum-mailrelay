@@ -1,12 +1,12 @@
-version: '2'
+version: '3'
 services:
   postfix-test:
     container_name: postfix-test
-    depends_on: 
-      - postfix
     build: 
       context: .
       dockerfile: Dockerfile-Testcontainer
+    depends_on: 
+      - postfix
     networks: 
       - mail
 
