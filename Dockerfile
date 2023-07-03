@@ -12,4 +12,6 @@ RUN mkdir /config && \
     ln -s /config/main.cf /etc/postfix/main.cf && \
     ln -s /config/master.cf /etc/postfix/master.cf
 
+EXPOSE 25
+
 CMD ["postfix", "start-fg"]

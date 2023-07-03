@@ -1,15 +1,13 @@
-version: '2'
+version: '3'
 services:
   postfix:
     container_name: postfix
-    image: ghcr.io/ls1admin/postfix
+    image: ghcr.io/ls1admin/postfix:latest
     build: 
       context: .
       dockerfile: Dockerfile
     networks: 
       - mail
-    expose:
-    - "25"
     restart: always
     volumes:
       - "./postfix-config:/config"
