@@ -1,0 +1,20 @@
+version: '3'
+services:
+  postfix:
+    container_name: postfix
+    image: ghcr.io/ls1admin/postfix:latest
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "25:25"
+    networks: 
+      - mail
+    restart: always
+    volumes:
+      - "./postfix-config:/config"
+    hostname: ${HOST_FQDN}
+
+networks: 
+  mail: 
+    driver: bridge
