@@ -1,17 +1,38 @@
-version: '3'
 services:
   postfix:
-    container_name: postfix
-    image: ghcr.io/ls1admin/postfix:latest
+      container_name: postfix
+      image: ghcr.io/ls1admin/postfix:latest
+      build: 
+        context: .
+        dockerfile: Dockerfile
+      ports:
+        - "25:25" # only map the port for local testing
+      networks: 
+        - mail
+      restart: always
+      volumes:
+        - "./postfix-config:/config"
+      hostname: ${HOST_FQDN}
+      healthcheck:
+        test: ["CMD-SHELL", "postfix status || exit 1"]
+        interval: 5s
+        timeout: 5s
+        retries: 5
+  postfix-test:
+    container_name: postfix-test
     build: 
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.testing
+    depends_on:
+      postfix:
+        condition: service_healthy
     networks: 
       - mail
-    restart: always
-    volumes:
-      - "./postfix-config:/config"
-    hostname: ${HOST_FQDN}
+    environment:
+      - SENDER=test@ios.ase.cit.tum.de
+      - RECEIVER=linhuber@in.tum.de
+    profiles:
+      - test
 
 networks: 
   mail: 
