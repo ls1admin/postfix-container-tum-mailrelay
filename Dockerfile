@@ -17,4 +17,7 @@ VOLUME [ "/config" ]
 
 EXPOSE 25
 
+HEALTHCHECK --interval=5s --timeout=5s --start-period=2s --retries=5 \
+    CMD postfix status || exit 1
+
 CMD ["postfix", "start-fg"]

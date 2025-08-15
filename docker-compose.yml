@@ -13,11 +13,6 @@ services:
       volumes:
         - "./postfix-config:/config"
       hostname: ${HOST_FQDN}
-      healthcheck:
-        test: ["CMD-SHELL", "postfix status || exit 1"]
-        interval: 5s
-        timeout: 5s
-        retries: 5
   postfix-test:
     container_name: postfix-test
     build: 
