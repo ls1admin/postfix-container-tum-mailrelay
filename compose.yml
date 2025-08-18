@@ -10,8 +10,6 @@ services:
       networks: 
         - mail
       restart: always
-      volumes:
-        - "./postfix-config:/config"
       hostname: ${HOST_FQDN}
   postfix-test:
     container_name: postfix-test
@@ -25,7 +23,7 @@ services:
       - mail
     environment:
       - SENDER=test@ios.ase.cit.tum.de
-      - RECEIVER=linhuber@in.tum.de
+      - RECEIVER=test@example.com # TODO change to real recipient
     profiles:
       - test
 

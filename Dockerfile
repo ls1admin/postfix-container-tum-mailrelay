@@ -13,7 +13,9 @@ RUN mkdir /config && \
     ln -s /config/main.cf /etc/postfix/main.cf && \
     ln -s /config/master.cf /etc/postfix/master.cf
 
-VOLUME [ "/config" ]
+# Copy custom configuration files
+COPY postfix-config/main.cf /config/main.cf
+COPY postfix-config/master.cf /config/master.cf
 
 EXPOSE 25
 
