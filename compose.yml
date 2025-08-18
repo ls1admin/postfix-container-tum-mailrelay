@@ -1,0 +1,32 @@
+services:
+  postfix:
+      container_name: postfix
+      image: ghcr.io/ls1admin/postfix:latest
+      build: 
+        context: .
+        dockerfile: Dockerfile
+      ports:
+        - "25:25" # only map the port for local testing
+      networks: 
+        - mail
+      restart: always
+      hostname: ${HOST_FQDN}
+  postfix-test:
+    container_name: postfix-test
+    build: 
+      context: .
+      dockerfile: Dockerfile.testing
+    depends_on:
+      postfix:
+        condition: service_healthy
+    networks: 
+      - mail
+    environment:
+      - SENDER=test@ios.ase.cit.tum.de
+      - RECEIVER=test@example.com # TODO change to real recipient
+    profiles:
+      - test
+
+networks: 
+  mail: 
+    driver: bridge
