@@ -5,7 +5,7 @@ import os
 s = os.getenv("SENDER", "test@ios.ase.cit.tum.de")
 
 # Receiver(s) from env var RECEIVER. Support comma-separated lists.
-_r = os.getenv("RECEIVER", "linhuber@in.tum.de")
+_r = os.getenv("RECEIVER", "test@example.com")
 if "," in _r:
     r = [addr.strip() for addr in _r.split(",") if addr.strip()]
 else:
