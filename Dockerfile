@@ -1,6 +1,6 @@
 # Ref: https://www.frakkingsweet.com/postfix-in-a-container/
 
-FROM debian:12-slim
+FROM debian:13-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
