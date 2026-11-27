@@ -1,0 +1,7 @@
+version: 2
+updates:
+  # Keep the actions of the build workflow current
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
