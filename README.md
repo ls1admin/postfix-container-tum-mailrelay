@@ -24,3 +24,7 @@ docker compose up --build
 ```
 
 Check the logs of the Postfix container to verify that the email was sent successfully.
+
+## Keeping the image up to date
+
+The image is published as `ghcr.io/ls1admin/postfix`. The workflow `Build and Push` rebuilds `latest` from the `main` branch every Monday and can be started manually (Actions, `Build and Push`, `Run workflow`), so security updates of the base image reach the image without a code change. Consumers that pin the image by digest need to update the digest to pick up a new build.
