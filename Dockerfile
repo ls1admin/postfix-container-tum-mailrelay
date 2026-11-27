@@ -1,11 +1,11 @@
 # Ref: https://www.frakkingsweet.com/postfix-in-a-container/
 
-FROM debian:12-slim
+# Alpine 3.24 ships Postfix 3.11.x, the newest stable Postfix line
+FROM alpine:3.24
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt update && \
-    apt install -y --no-install-recommends postfix mailutils 
+# Upgrade first, so that security fixes released after the base image was built are included
+RUN apk upgrade --no-cache && \
+    apk add --no-cache postfix s-nail ca-certificates
 
 RUN mkdir /config && \
     mv /etc/postfix/main.cf /config/main.cf && \
